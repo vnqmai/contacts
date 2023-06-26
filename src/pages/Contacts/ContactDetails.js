@@ -17,11 +17,13 @@ const ContactDetails = (props) => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    fetchContactDetails(id);
-  }, []);
+    if (id) {
+      fetchContactDetails(id);
+    }
+  }, [id]);
 
   const fetchContactDetails = async (id) => {
-    const response = await fetch(`http://localhost:3000/contacts/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}/contacts/${id}`);
     const data = await response.json();
     setData(data);
   };

@@ -12,7 +12,6 @@ const Contatcs = () => {
   const [contacts, setContacts] = useState([]);
   const [totalDocs, setTotalDocs] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
-  const [searchKey, setSearchKey] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -20,7 +19,7 @@ const Contatcs = () => {
 
   const fetchData = async (page = 1, key = "") => {
     const response = await fetch(
-      `http://localhost:3000/contacts?_limit=10&_page=${page}&name_like=${key}`
+      `${process.env.REACT_APP_BASE_API_URL}/contacts?_limit=10&_page=${page}&name_like=${key}`
     );
     const data = await response.json();
     const formatedData = data.map((item) => ({
@@ -46,7 +45,6 @@ const Contatcs = () => {
 
   const onSearchKeyChange = (e) => {
     const key = e.target.value;
-    setSearchKey(key);
     fetchData(currentPage, key);
   };
 

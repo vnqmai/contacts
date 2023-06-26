@@ -15,19 +15,25 @@ function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {items.map((item) => (
-          <tr
-            key={`tr-${item.id}`}
-            className={itemClassName}
-            onClick={() => onItemClick(item.id)}
-          >
-            {fields.map((field) => (
-              <td key={`td-${field.name}`} className={`td-${field.className}`}>
-                {item[field.name]}
-              </td>
-            ))}
+        {
+          items?.length > 0 ?
+          items.map((item) => (
+            <tr
+              key={`tr-${item.id}`}
+              className={itemClassName}
+              onClick={() => onItemClick(item.id)}
+            >
+              {fields.map((field) => (
+                <td key={`td-${field.name}`} className={`td-${field.className}`}>
+                  {item[field.name]}
+                </td>
+              ))}
+            </tr>
+          )) :
+          <tr>
+            <td colSpan={fields.length} className="no-results">No results</td>
           </tr>
-        ))}
+        }
       </tbody>
     </BSTable>
   );
