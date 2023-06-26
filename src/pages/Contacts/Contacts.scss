@@ -1,0 +1,23 @@
+.contacts-container {
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  .contacts-filter {
+    padding: 20px;
+  }
+
+  .contacts-table {
+    padding: 30px;
+  }
+
+  .contacts-item {
+    cursor: pointer;
+    &-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: block;
+      margin: auto;
+    }
+  }
+}
